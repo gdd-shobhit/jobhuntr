@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { AppHeader } from './components/AppHeader';
 import { JobDetails } from './components/JobDetails';
 import { JobForm } from './components/JobForm';
 import { JobListItem } from './components/JobListItem';
@@ -196,7 +197,9 @@ function App() {
   };
 
   return (
-    <div className="app-shell">
+    <div className="app-root">
+      <AppHeader />
+      <div className="app-shell">
       <aside className="left-pane">
         <div className="left-pane-header">
           <div className="left-pane-title-row">
@@ -311,6 +314,7 @@ function App() {
       </aside>
 
       <main className="right-pane">{renderRightPane()}</main>
+      </div>
     </div>
   );
 }
