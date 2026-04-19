@@ -64,6 +64,7 @@ export function useJobs(): UseJobs {
       description: draft.description,
       status: draft.status,
       fitScore: clampFitScore(draft.fitScore),
+      coverLetterNeeded: draft.coverLetterNeeded,
       createdAt: now,
       updatedAt: now,
     };
@@ -90,6 +91,10 @@ export function useJobs(): UseJobs {
                   changes.fitScore !== undefined
                     ? clampFitScore(changes.fitScore)
                     : j.fitScore,
+                coverLetterNeeded:
+                  changes.coverLetterNeeded !== undefined
+                    ? changes.coverLetterNeeded
+                    : j.coverLetterNeeded,
                 updatedAt: new Date().toISOString(),
               }
             : j,

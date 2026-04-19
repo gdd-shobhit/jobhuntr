@@ -50,6 +50,11 @@ export function JobDetails({
           <span className="fit-score-badge" title="Fit score">
             Fit {job.fitScore}/{FIT_SCORE_MAX}
           </span>
+          {job.coverLetterNeeded && (
+            <span className="cover-letter-badge" title="Cover letter needed">
+              Cover letter
+            </span>
+          )}
           <span className={`status-badge status-${job.status}`}>
             {STATUS_LABELS[job.status]}
           </span>
@@ -104,6 +109,16 @@ export function JobDetails({
                 </option>
               ))}
             </select>
+          </label>
+          <label className="toolbar-checkbox">
+            <input
+              type="checkbox"
+              checked={job.coverLetterNeeded}
+              onChange={(e) =>
+                onUpdate(job.id, { coverLetterNeeded: e.target.checked })
+              }
+            />
+            <span>Cover letter needed</span>
           </label>
         </div>
         <div className="job-details-actions">

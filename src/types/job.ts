@@ -32,6 +32,7 @@ export interface Job {
   description: string;
   status: JobStatus;
   fitScore: number;
+  coverLetterNeeded: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -44,6 +45,7 @@ export type JobDraft = Pick<
   | 'description'
   | 'status'
   | 'fitScore'
+  | 'coverLetterNeeded'
 >;
 
 export function isJobStatus(value: unknown): value is JobStatus {
@@ -69,6 +71,7 @@ export function isJob(value: unknown): value is Job {
     typeof j.description === 'string' &&
     isJobStatus(j.status) &&
     fitOk &&
+    typeof j.coverLetterNeeded === 'boolean' &&
     typeof j.createdAt === 'string' &&
     typeof j.updatedAt === 'string'
   );
@@ -94,6 +97,8 @@ export function coerceJob(value: unknown): Job | null {
   if (typeof j.fitScore === 'number' && Number.isFinite(j.fitScore)) {
     fitScore = clampFitScore(j.fitScore);
   }
+  const coverLetterNeeded =
+    typeof j.coverLetterNeeded === 'boolean' ? j.coverLetterNeeded : false;
   return {
     id: j.id,
     title: j.title,
@@ -102,6 +107,7 @@ export function coerceJob(value: unknown): Job | null {
     description: j.description,
     status: j.status,
     fitScore,
+    coverLetterNeeded,
     createdAt: j.createdAt,
     updatedAt: j.updatedAt,
   };

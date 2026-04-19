@@ -27,7 +27,14 @@ export function JobListItem({ job, active, onSelect }: JobListItemProps) {
     >
       <div className="job-list-item-row">
         <span className="job-list-item-title">{job.title || 'Untitled'}</span>
-        <span className={`status-dot status-${job.status}`} aria-hidden="true" />
+        <span className="job-list-item-row-end">
+          {job.coverLetterNeeded && (
+            <span className="job-list-item-cl" title="Cover letter needed">
+              CL
+            </span>
+          )}
+          <span className={`status-dot status-${job.status}`} aria-hidden="true" />
+        </span>
       </div>
       <div className="job-list-item-row secondary">
         <span className="job-list-item-company">
@@ -41,6 +48,7 @@ export function JobListItem({ job, active, onSelect }: JobListItemProps) {
         </span>
       </div>
       <span className="sr-only">
+        {job.coverLetterNeeded ? 'Cover letter needed. ' : ''}
         Fit score {job.fitScore} out of {FIT_SCORE_MAX}. Status:{' '}
         {STATUS_LABELS[job.status]}
       </span>

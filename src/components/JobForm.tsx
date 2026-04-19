@@ -24,6 +24,7 @@ const emptyDraft: JobDraft = {
   description: '',
   status: 'not_applied',
   fitScore: FIT_SCORE_DEFAULT,
+  coverLetterNeeded: false,
 };
 
 function fromJob(job: Job): JobDraft {
@@ -34,6 +35,7 @@ function fromJob(job: Job): JobDraft {
     description: job.description,
     status: job.status,
     fitScore: job.fitScore,
+    coverLetterNeeded: job.coverLetterNeeded,
   };
 }
 
@@ -142,6 +144,17 @@ export function JobForm({
           aria-label="Fit score"
         />
       </div>
+
+      <label className="checkbox-field">
+        <input
+          type="checkbox"
+          checked={draft.coverLetterNeeded}
+          onChange={(e) =>
+            setDraft({ ...draft, coverLetterNeeded: e.target.checked })
+          }
+        />
+        <span>Cover letter needed</span>
+      </label>
 
       <label className="field">
         <span className="field-label">Description</span>

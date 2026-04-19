@@ -198,6 +198,25 @@
   border-radius: 4px;
 }
 
+.job-list-item-row-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.job-list-item-cl {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 1px 4px;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
 .job-list-item-title {
   font-weight: 500;
   color: var(--text);
@@ -391,6 +410,28 @@
   min-height: 28px;
 }
 
+.checkbox-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text);
+  user-select: none;
+}
+
+.checkbox-field input {
+  margin-top: 2px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+}
+
 /* Job details (right pane) */
 .job-details {
   display: flex;
@@ -423,6 +464,33 @@
   background: color-mix(in oklab, var(--primary) 18%, transparent);
   color: var(--primary);
   font-variant-numeric: tabular-nums;
+}
+
+.cover-letter-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: color-mix(in oklab, var(--text-muted) 22%, transparent);
+  color: var(--text-muted);
+}
+
+.toolbar-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toolbar-checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
 }
 
 .job-details-title {
